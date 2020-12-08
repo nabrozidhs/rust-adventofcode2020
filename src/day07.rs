@@ -82,7 +82,7 @@ mod tests_day07 {
     }
 
     #[test]
-    fn day06() {
+    fn day07() {
         let mut file = File::open("data/day07.txt").unwrap();
         let mut buffer = String::new();
         file.read_to_string(&mut buffer).unwrap();
