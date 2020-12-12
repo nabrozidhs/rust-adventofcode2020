@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::ops::{AddAssign, Add, Sub};
+use std::ops::{Add, AddAssign, Mul, Sub, SubAssign};
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, Hash)]
 pub struct Vector2(pub i64, pub i64);
@@ -41,6 +41,24 @@ impl AddAssign for Vector2 {
     fn add_assign(&mut self, other: Self) {
         self.0 += other.0;
         self.1 += other.1;
+    }
+}
+
+impl SubAssign for Vector2 {
+    fn sub_assign(&mut self, other: Self) {
+        self.0 -= other.0;
+        self.1 -= other.1;
+    }
+}
+
+impl Mul<i64> for Vector2 {
+    type Output = Self;
+
+    fn mul(self, rhs: i64) -> Self {
+        Self {
+            0: self.0 * rhs,
+            1: self.1 * rhs,
+        }
     }
 }
 
