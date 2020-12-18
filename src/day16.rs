@@ -2,7 +2,6 @@ use std::collections::{HashMap, HashSet};
 use std::ops::RangeInclusive;
 
 use regex::{Captures, Regex};
-use itertools::Itertools;
 use std::iter::FromIterator;
 
 lazy_static! {
@@ -56,8 +55,7 @@ fn _part2(my_ticket: &Vec<u64>, all_tickets: &Vec<Vec<u64>>, fields: &HashMap<&s
     search_options.iter().enumerate()
         .filter(|(_, k)| k.iter().next().unwrap().starts_with("departure"))
         .map(|(i, _)| my_ticket[i])
-        .fold1(|acc, x| acc * x)
-        .unwrap()
+        .product()
 }
 
 fn _day16(input: &str, f: &dyn Fn(&Vec<u64>, &Vec<Vec<u64>>, &HashMap<&str, Vec<RangeInclusive<u64>>>) -> u64) -> u64 {
